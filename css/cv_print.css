@@ -27,33 +27,19 @@ text-align: center;
 font-size: 28px;
 }
 .contacts {
-
 }
 h1 .contacts {
 font-size: 50%;
 font-weight: normal;
 }
 .body {
-position: relative;
 }
 .toolbar {
-list-style: none;
-float: right;
-width: 200px;
-border: 1px solid green;
-margin: 0;
-padding: 0 5px;
-}
-.toolbar.fixed {
-position: fixed;
-right: 0;
-top: 0;
+display:none;
 }
 .cv {
 list-style: none;
-position: absolute;
-left: 40px;
-right: 210px;
+margin-left: 40px;
 }
 .cv-content {
 margin-left: 20px;
@@ -61,20 +47,6 @@ margin-left: 20px;
 .cv-content dd {
 margin-left: 25px;
 }
-.collapse-handler {
-margin-left: -16px;
-}
 .icon16 {
-background: url(./icon16.png) no-repeat;
-text-decoration: none !important;
-text-indent: -9999px;
-height: 16px;
-width: 16px; 
-display: inline-block;
-}
-.icon16.darr {
-background-position: -112px 0;
-}
-.icon16.rarr {
-background-position: -144px 0;
+display: none;
 }
