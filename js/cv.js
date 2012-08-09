@@ -1,6 +1,8 @@
 $(function() {
 
 makeCollapsibleCV();
+
+initToolbar();
 makeFloatingToolbar();
 
 function makeCollapsibleCV() {
@@ -16,6 +18,13 @@ function makeCollapsibleCV() {
             self.removeClass('rarr').addClass('darr');
             content.show();
         }
+    });
+}
+
+function initToolbar() {
+    $('.toolbar-print').click(function() {
+        window.print();
+        return false;
     });
 }
 
