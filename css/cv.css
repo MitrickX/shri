@@ -1,0 +1,37 @@
+.content {
+}
+.header {
+text-align: center;
+}
+.header h1 {
+font-size: 28px;
+}
+.contacts {
+
+}
+h1 .contacts {
+font-size: 50%;
+font-weight: normal;
+}
+.body {
+}
+.cv {
+list-style: none;
+}
+.collapse-handler {
+margin-left: -16px;
+}
+.icon16 {
+background: url(./icon16.png) no-repeat;
+text-decoration: none !important;
+text-indent: -9999px;
+height: 16px;
+width: 16px; 
+display: inline-block;
+}
+.icon16.darr {
+background-position: -112px 0;
+}
+.icon16.rarr {
+background-position: -144px 0;
+}
