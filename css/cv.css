@@ -17,73 +17,39 @@ blockquote, q { quotes: none; }
 blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
 table { border-collapse: collapse; border-spacing: 0; }
 
-.content {
-line-height: 1.5;
-}
-.header {
-text-align: center;
-}
-.header h1 {
-font-size: 28px;
-}
-.contacts {
+.content { line-height: 1.5; }
+.header { text-align: center; }
+.header h1 { font-size: 28px; }
+.contacts {}
+h1 .contacts { font-size: 50%; font-weight: normal; }
+.body { }
 
-}
-h1 .contacts {
-font-size: 50%;
-font-weight: normal;
-}
-.body {
-position: relative;
-}
-.toolbar {
-list-style: none;
-float: right;
-width: 140px;
-font-size: 90%;
-margin: 0;
-padding: 0 5px;
-}
-.toolbar a {
-text-decoration: none;
-}
-.toolbar.fixed {
-position: fixed;
-right: 0;
-top: 0;
-}
-.cv {
-list-style: none;
-position: absolute;
-left: 40px;
-right: 150px;
-}
-.cv-content {
-margin-left: 20px;
-}
-.cv-content dd {
-margin-left: 25px;
-}
-.collapse-handler {
-margin-left: -16px;
-}
-.icon16 {
-background: url(./icon16.png) no-repeat;
-text-decoration: none !important;
-text-indent: -9999px;
-height: 16px;
-width: 16px; 
-display: inline-block;
-}
-.icon16.darr {
-background-position: -112px 0;
-}
-.icon16.rarr {
-background-position: -144px 0;
-}
-.icon16.print {
-background-position: -32px -96px; 
-}
-.icon16.pdf {
-background-position: -32px -80px; 
-}
+a:hover { color: red !important; }
+a, a:visited { color: #03c; outline: 0 none; }
+
+.toolbar { list-style: none; float: right; width: 140px; font-size: 90%; margin-top: 4px; padding: 0 5px; }
+.toolbar a { text-decoration: none; }
+.toolbar.fixed { position: fixed; right: 0; top: 0; }
+
+.cv { list-style: none; position: absolute; left: 40px; right: 150px; }
+.cv-content { margin-left: 20px; }
+.cv-content dd { margin-left: 25px; }
+
+.answers { position: absolute; left: 40px; right: 150px; }
+
+.tabs { list-style: none; margin-left: 10px; white-space: nowrap; height: 32px; font-size: 90%; }
+.tabs li { display: inline-block; vertical-align: top; margin-right: 5px; position: relative; background: #eee; border: 1px solid #ccc; }
+.tabs li.selected { background: white; border: 1px solid #aaa; border-bottom: 1px solid white; margin-right: 5px; }
+.tabs li a { text-decoration: none; line-height: 30px; height: 30px; display: block; padding: 0 0.8em 0; }
+.tabs-contianer { margin-top: -1px; border-top: 1px solid #ccc; background: white; display: block; width: 100%; }
+.tab-content { }
+
+.collapse-handler { margin-left: -16px; }
+
+.icon16 { background: url(./icon16.png) no-repeat; text-decoration: none !important; text-indent: -9999px; height: 16px; width: 16px;  display: inline-block; }
+.icon16.darr { background-position: -112px 0;}
+.icon16.rarr { background-position: -144px 0; }
+.icon16.print { background-position: -32px -96px; }
+.icon16.pdf { background-position: -32px -80px; }
+
+.clear-left { clear:left; }

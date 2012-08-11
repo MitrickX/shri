@@ -5,6 +5,8 @@ makeCollapsibleCV();
 initToolbar();
 makeFloatingToolbar();
 
+initTabsWidget();
+
 function makeCollapsibleCV() {
     $('.collapsible .collapse-handler').click(function() {
         var self = $(this),
@@ -29,8 +31,6 @@ function initToolbar() {
 }
 
 function makeFloatingToolbar() {
-    var container = $('.body'),
-        top_offset = container.position()['top'];
     function handler(e) {
         var toolbar = $('.toolbar');
         if (!toolbar.length) {
@@ -39,7 +39,7 @@ function makeFloatingToolbar() {
         if (typeof handler.top === 'undefined') {
             handler.top = toolbar.position()['top'];
         }
-        if ($(document).scrollTop() - top_offset > handler.top) {
+        if ($(document).scrollTop() > handler.top) {
             toolbar.addClass('fixed');
         } else {
             toolbar.removeClass('fixed');
@@ -49,6 +49,23 @@ function makeFloatingToolbar() {
     handler();
     // bind handler
     $(document).bind('scroll', handler);
+}
+
+function initTabsWidget() {
+    $('.tabs a').click(function() {
+        var li = $(this).parents('li:first'),
+            id_suffix = li.attr('id').replace('tab-', '');
+        if (id_suffix) {
+            var tab = $('#tab-content-'+id_suffix);
+            if (tab.hasClass('tab-content')) {
+                $('.tab-content').hide();
+                tab.show();
+                $('.tabs .selected').removeClass('selected');
+                li.addClass('selected');
+            }
+        }
+        return false;
+    });
 }
 
 });

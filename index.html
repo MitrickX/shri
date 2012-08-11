@@ -18,45 +18,197 @@
     </h1>
   </div>
   <div class="body">
-    <ul class="toolbar">
-      <li><i class="icon16 pdf"></i> <a href="#" class="toolbar-pdf">Скачать PDF</a></li>
-      <li><i class="icon16 print"></i> <a href="#" class="toolbar-print">Напечатать</a></li>
+    <ul class="tabs">
+      <li class="selected" id="tab-cv"><a href="javascript:void(0);">Резюме</a></li>
+      <li id="tab-answers"><a href="javascript:void(0);">Ответы на технические вопросы</a></li>
     </ul>
-    <ul class="cv collapsible">
-      <li>
-        <h2 class="cv-header"><i class="icon16 darr collapse-handler"></i>Общая информация</h2>
-        <div class="personal collapse-content cv-content">
-          <p>Дата рождения: 8 января 1987 г.</p>
-          <p>Пол: мужской</p>
-        </div>
-      </li>
-      <li>
-        <h2 class="cv-header"><i class="icon16 darr collapse-handler"></i>Образование</h2>
-        <dl class="collapse-content cv-content">
-          <dt>2004 &mdash; 2009</dt>
-          <dd>Марийский государственный технический университет. Кафедра безопасности информации.<br>
-              Специальность: Комплексное обеспечение информационной безопасности автоматизированных систем</dd>
-        </dl>
-      </li>
-      <li>
-        <h2 class="cv-header"><i class="icon16 darr collapse-handler"></i>Профессиональный опыт</h2>
-        <dl class="collapse-content cv-content">
-          <dt>2012 &mdash; наст.вр.</dt>
-          <dd>ООО "Артикус"</dd>
-          <dt>2010 &mdash; 2011</dt>
-          <dd>НИИ МКО</dd>
-        </dl>
-      </li>
-      <li>
-        <h2 class="cv-header"><i class="icon16 darr collapse-handler"></i>Профессиональные навыки</h2>
-        <ul class="collapse-content cv-content">
-          <li>Знание языков программирования: PHP5(ООП, CakePHP, Zend Framework, Smarty), C/C++(MFC, WinAPI), Javascript(jQuery) </li>
-          <li>Знание СУБД: MySQL</li>
-          <li>Верстка: HTML, CSS</li>
-          <li>Иностранные языки: Английский на уровне чтения документации</li>
+    <div class="tabs-contianer">
+      <ul class="toolbar">
+        <li><i class="icon16 pdf"></i> <a href="#" class="toolbar-pdf">Скачать PDF</a></li>
+        <li><i class="icon16 print"></i> <a href="#" class="toolbar-print">Напечатать</a></li>
+      </ul>
+      <div class="tab-content" id="tab-content-cv">
+        <ul class="cv collapsible">
+          <li>
+            <h2 class="cv-header"><i class="icon16 darr collapse-handler"></i>Общая информация</h2>
+            <div class="personal collapse-content cv-content">
+              <p>Дата рождения: 8 января 1987 г.</p>
+              <p>Пол: мужской</p>
+            </div>
+          </li>
+          <li>
+            <h2 class="cv-header"><i class="icon16 darr collapse-handler"></i>Образование</h2>
+            <dl class="collapse-content cv-content">
+              <dt>2004 &mdash; 2009</dt>
+              <dd>Марийский государственный технический университет. Кафедра безопасности информации.<br>
+                  Специальность: Комплексное обеспечение информационной безопасности автоматизированных систем</dd>
+            </dl>
+          </li>
+          <li>
+            <h2 class="cv-header"><i class="icon16 darr collapse-handler"></i>Профессиональный опыт</h2>
+            <dl class="collapse-content cv-content">
+              <dt>2012 &mdash; наст.вр.</dt>
+              <dd>ООО "Артикус"</dd>
+              <dt>2010 &mdash; 2011</dt>
+              <dd>НИИ МКО</dd>
+            </dl>
+          </li>
+          <li>
+            <h2 class="cv-header"><i class="icon16 darr collapse-handler"></i>Профессиональные навыки</h2>
+            <ul class="collapse-content cv-content">
+              <li>Знание языков программирования: PHP5(ООП, CakePHP, Zend Framework, Smarty), C/C++(MFC, WinAPI), Javascript(jQuery) </li>
+              <li>Знание СУБД: MySQL</li>
+              <li>Верстка: HTML, CSS</li>
+              <li>Иностранные языки: Английский на уровне чтения документации</li>
+            </ul>
+          </li>
         </ul>
-      </li>
-    </ul>
+      </div>
+      <div class="tab-content" id="tab-content-answers" style="display: none;">
+        <ol class="answers">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <!-- 5 -->
+          <li>
+            <strong>Bash</strong><br>
+            <pre>#!/bin/bash
+usage() {
+cat << EOF;
+Usage: printargs.sh [OPTIONS] [ARGUMENTS]
+  Print the number of arguments
+
+OPTIONS:
+  -h      print help message
+  -m MSG  custom message
+  -v      print arguments
+
+Examples:
+  printargs.sh a b c
+  printargs.sh -m 'Arguments count: ' a b c
+  printargs.sh -h
+  printargs.sh -v -m 'Arguments count: ' a b c
+EOF
+}
+
+VERBOSE=0
+
+while getopts "hvm:" OPTION 
+do
+    case $OPTION in
+        h)
+           usage
+           exit 1
+           ;;
+        m)
+           MESSAGE=$OPTARG
+           ;;
+        v)
+           VERBOSE=1
+           ;;
+    esac
+done
+
+shift $((OPTIND-1))
+
+if [[ "$#" != "0" ]]; then
+    if [[ "$MESSAGE" != "" ]]; then
+        echo -n $MESSAGE
+    fi
+
+    echo $#
+
+    if [[ "$VERBOSE" == "1" ]]; then
+        echo "Arguments:" $@;
+    fi
+else
+    usage
+fi</pre><br>
+
+            <strong>Python</strong><br>
+            <pre>
+            #!/usr/bin/python
+
+import sys
+import argparse
+
+parser = argparse.ArgumentParser(description='Print the number of arguments.')
+parser.add_argument('arguments', metavar='ARG', type=str, nargs='*', help='some arguments')
+parser.add_argument('-m', dest='message', default='', help='custom message')
+parser.add_argument('-v', dest='verbose', action='store_true', help='print arguments')
+
+args = parser.parse_args()
+
+count = len(args.arguments)
+if (count != 0): 
+    if args.message != '':
+        sys.stdout.write(args.message)
+    print(count)
+    if args.verbose:
+       print ("Arguments: " + ' '.join(args.arguments));
+else:
+    parser.print_help();</pre><br>
+
+            <strong>Perl</strong><br>
+            <pre>#!/usr/bin/perl
+
+use strict;
+use Getopt::Long;
+use Pod::Usage;
+
+my $help;
+my $message = '';
+my $verbose;
+
+@ARGV and GetOptions(
+    "h" => \$help,
+    "m:s" => \$message,
+    "v" => \$verbose
+) or pod2usage(1);
+pod2usage(-verbose => 2, -exitval => 2) if $help;
+
+my $count = $#ARGV + 1; 
+
+if ($message ne "") {
+    print $message;
+}
+
+print ($count . "\n");
+
+if ($verbose) {
+    print "Arguments: " . (join ' ', @ARGV) . "\n";
+}
+
+__END__
+
+=head1 NAME
+
+    printargs.pl - Print the number of arguments.
+
+=head1 SYNOPSIS
+
+    printargs.pl [options] [arguments]
+
+=head1 OPTIONS
+
+    -h      Show help message
+    -m MSG  Specify a custom message
+    -v      print arguments
+
+=head1 EXAMPLE
+
+    printargs.sh a b c
+    printargs.sh -m 'Arguments count: ' a b c
+    printargs.sh -h
+    printargs.sh -v -m 'Arguments count: ' a b c</pre>
+          </li>
+          <!--/ 5 -->
+          <li></li>
+        </ol>
+      </div>
+    </div>
+    <div class="clear-left"></div>
   </div>
 </div>
 </body>
