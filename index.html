@@ -66,9 +66,161 @@
       </div>
       <div class="tab-content" id="tab-content-answers" style="display: none;">
         <ol class="answers">
-          <li></li>
-          <li></li>
-          <li></li>
+          <!-- 1 -->
+          <li>
+            alert, console, штатные отладчики в браузерах. Написание тестов
+          </li>
+          <!-- 2 -->
+          <li>
+            Поведение браузера по умолчанию - переход по ссылке, т.е. отсылка на сервер GET-запроса на получение страницы. После получения ответа от сервера происходит интерпретация html(xhtml, xml) кода. 
+            Поведение по умолчанию можно переопределить, повесив на событие onclick обработчик, который либо вызовет метод preventDefault() объекта события (для IE &lt; 9 нужно установить свойство returnValue объекта события в false), либо возвратит false. Возвращение false не будет работать, если обработчик навешивается на событие через addEventListener/attachEvent.  
+          </li>
+          <!-- 3 -->
+          <li>
+<pre>
+/**
+ * Создает экземпляр Машины
+ * @this {Car}
+ * @param {string} manufacturer Производитель
+ * @param {string} model Модель
+ * @param {number} year Год производство
+ */
+function Car(manufacturer, model, year) {
+    this.manufacturer = manufacturer;
+    this.model = model;
+    this.year = year || (new Date()).getFullYear();
+}
+Car.prototype.getCountry = function() {
+    switch (this.manufacturer.toLowerCase()) {
+        case 'bmw':
+	    case 'audi':
+            return 'Germany';
+        case 'toyota':
+            return 'Japan';
+	}
+};
+Car.prototype.getInfo = function() {
+    return this.manufacturer + ' ' + this.model + ' ' + this.year;
+};
+Car.prototype.getDetailedInfo = function() {
+    return 'Производитель: ' + this.manufacturer + '. Модель: ' + this.model + '. Год: ' + this.year;
+};
+Car.prototype.toString = Car.prototype.getInfo;
+
+var bmw = new Car("BMW", "X5", 2010),
+    audi = new Car("Audi", "Q5", 2012),
+    toyota = new Car("Toyota", "Camry");
+
+/**
+ * Создает экземпляр Автосалона
+ * @this {CarDealer}
+ * @param {string} name Название автосалона
+ */
+function CarDealer(name) {
+    this.name = name;
+    this.cars = [];
+    this.prices = {};
+}
+CarDealer.prototype.add = function() {
+    for (var i = 0, n = arguments.length; i < n; i++) {
+        if (arguments[i] instanceof Car) {
+            this.cars.push(arguments[i]);        
+        }
+    }
+    return this;
+};
+/**
+ * Установить цену на машину
+ * @param {string} car идентификатор машины
+ * @param {string} price стоимость
+ */
+CarDealer.prototype.setPrice = function(car_id, price) {
+    this.prices[car_id] = price;
+    return this;
+};
+CarDealer.prototype._list = function(filter, price_descriptor) {
+    var list = [],
+        cars = this.cars;
+    if (typeof filter !== 'function') {
+        filter = function() {
+            return true;
+        }    
+    }
+    var formatCarInfo;
+    if (price_descriptor) {
+        var self = this,
+
+            formatPrice = (typeof price_descriptor === 'object') ?
+            function(price) {
+                currency = price.charAt(0);
+                price = price.substr(1);
+                if (price_descriptor.exchange_rate[currency]) {
+                    price = (price*price_descriptor.exchange_rate[currency]).toFixed(2);
+                    currency = price_descriptor.currency;
+                }
+                return currency + price;
+            } : 
+            function(price) {
+                return price;
+            };
+
+        formatCarInfo = function(car) {
+            var car_id = car.getInfo(),
+                price = self.prices[car_id],
+                output = car_id;
+            if (price) {
+                price = formatPrice(price);
+                output += '. Price: ' + price;
+            }
+            return output;            
+        }
+    } else {
+        formatCarInfo = function(car) {
+            return car.getInfo();
+        }
+    }
+    for (var i = 0, n = cars.length; i < n; i++) {
+        if (filter(cars[i])) {
+            list.push(formatCarInfo(cars[i]));
+        }
+    }
+    return list.join(', ');
+}
+CarDealer.prototype.list = function(price_descriptor) {
+    return this._list(null, price_descriptor);
+};
+CarDealer.prototype.listByCountry = function(country, price_descriptor) {
+    return this._list(function(car) {
+        return car.getCountry() == country;
+    }, price_descriptor);
+}
+
+var yandex = new CarDealer('Яндекс.Авто');
+yandex
+    .add(toyota)
+    .add(bmw, audi);
+
+yandex
+    .setPrice('BMW X5 2010', '€2000')
+    .setPrice('Audi Q5 2012', '€3000')
+    .setPrice('Toyota Camry 2012', '¥3000');
+
+yandex.list(); //Toyota Camry 2012, BMW X5 2010, Audi Q5 2012
+yandex.list(true); //Toyota Camry 2012. Price: ¥3000, BMW X5 2010. Price: €2000, Audi Q5 2012. Price: €3000
+yandex.listByCountry('Germany'); //BMW X5 2010, Audi Q5 2012
+yandex.listByCountry('Germany', true); //BMW X5 2010. Price: €2000, Audi Q5 2012. Price: €3000
+
+var var price_descriptor = {
+    currency: 'R',
+    exchange_rate: {
+        '€': 39.19,
+        '¥': 0.4
+    }
+};
+yandex.list(price_descriptor); //Toyota Camry 2012. Price: R1200.00, BMW X5 2010. Price: R78380.00, Audi Q5 2012. Price: R117570.00
+yandex.listById('Germany', price_descriptor); //BMW X5 2010. Price: R78380.00, Audi Q5 2012. Price: R117570.00
+</pre>            
+          </li>
           <li></li>
           <!-- 5 -->
           <li>
@@ -203,8 +355,11 @@ __END__
     printargs.sh -h
     printargs.sh -v -m 'Arguments count: ' a b c</pre>
           </li>
-          <!--/ 5 -->
-          <li></li>
+          <!--6 -->
+          <li>
+            Языки программирования - 
+            Структуры: 
+          </li>
         </ol>
       </div>
     </div>
