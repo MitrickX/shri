@@ -58,8 +58,8 @@ function initTabsWidget() {
         if (id_suffix) {
             var tab = $('#tab-content-'+id_suffix);
             if (tab.hasClass('tab-content')) {
-                $('.tab-content').hide();
-                tab.show();
+                $('.tab-content').removeClass('selected');
+                tab.addClass('selected');
                 $('.tabs .selected').removeClass('selected');
                 li.addClass('selected');
             }

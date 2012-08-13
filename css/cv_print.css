@@ -17,36 +17,14 @@ blockquote, q { quotes: none; }
 blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; }
 table { border-collapse: collapse; border-spacing: 0; }
 
-.content {
-line-height: 1.5;
-}
-.header {
-text-align: center;
-}
-.header h1 {
-font-size: 28px;
-}
-.contacts {
-}
-h1 .contacts {
-font-size: 50%;
-font-weight: normal;
-}
-.body {
-}
-.toolbar {
-display:none;
-}
-.cv {
-list-style: none;
-margin-left: 40px;
-}
-.cv-content {
-margin-left: 20px;
-}
-.cv-content dd {
-margin-left: 25px;
-}
-.icon16 {
-display: none;
-}
+.content { line-height: 1.5; }
+.header { text-align: center; }
+.header h1 { font-size: 180%; }
+
+h1 .contacts { font-size: 50%; font-weight: normal; }
+.toolbar, .icon16, .tabs { display:none; }
+.tab-content h1 { font-size: 120%; margin-left: 10px; }
+.cv { list-style: none; margin-left: 40px; }
+.cv-content { margin-left: 20px; }
+.cv-content dd { margin-left: 25px; }
+.answers { margin-left: 40px; }

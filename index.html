@@ -24,10 +24,11 @@
     </ul>
     <div class="tabs-contianer">
       <ul class="toolbar">
-        <li><i class="icon16 pdf"></i> <a href="#" class="toolbar-pdf">Скачать PDF</a></li>
+        <li><i class="icon16 pdf"></i> <a href="cv.pdf" class="toolbar-pdf">Скачать PDF</a></li>
         <li><i class="icon16 print"></i> <a href="#" class="toolbar-print">Напечатать</a></li>
       </ul>
-      <div class="tab-content" id="tab-content-cv">
+      <div class="tab-content selected" id="tab-content-cv">
+	      <h1>Резюме</h1>
         <ul class="cv collapsible">
           <li>
             <h2 class="cv-header"><i class="icon16 darr collapse-handler"></i>Общая информация</h2>
@@ -64,7 +65,8 @@
           </li>
         </ul>
       </div>
-      <div class="tab-content" id="tab-content-answers" style="display: none;">
+      <div class="tab-content" id="tab-content-answers">
+        <h1>Ответы на технические вопросы</h1>
         <ol class="answers">
           <!-- 1 -->
           <li>
@@ -228,7 +230,7 @@ yandex.listById('Germany', price_descriptor); //BMW X5 2010. Price: R78380.00, A
           <!-- 5 -->
           <li>
             <strong>Bash</strong><br>
-            <pre>#!/bin/bash
+<pre>#!/bin/bash
 usage() {
 cat << EOF;
 Usage: printargs.sh [OPTIONS] [ARGUMENTS]
@@ -279,11 +281,10 @@ if [[ "$#" != "0" ]]; then
     fi
 else
     usage
-fi</pre><br>
-
+fi
+</pre><br>
             <strong>Python</strong><br>
-            <pre>
-            #!/usr/bin/python
+<pre>#!/usr/bin/python
 
 import sys
 import argparse
@@ -303,10 +304,11 @@ if (count != 0):
     if args.verbose:
        print ("Arguments: " + ' '.join(args.arguments));
 else:
-    parser.print_help();</pre><br>
+    parser.print_help();
+</pre><br>
 
             <strong>Perl</strong><br>
-            <pre>#!/usr/bin/perl
+<pre>#!/usr/bin/perl
 
 use strict;
 use Getopt::Long;
@@ -356,15 +358,16 @@ __END__
     printargs.sh a b c
     printargs.sh -m 'Arguments count: ' a b c
     printargs.sh -h
-    printargs.sh -v -m 'Arguments count: ' a b c</pre>
+    printargs.sh -v -m 'Arguments count: ' a b c
+</pre>
           </li>
           <!--6 -->
           <li>
-            Языки программирования. Специальный предмет, в котором уделялось бы внимание классификации языков программирования, системам типов, парадигмам, в вузе не давался. В целом общее представление есть.
-            Структуры. В вузе был предмет "Структуры обработки данных" длительностью в 1 семестр. Изучали: стеки, очереди, деревья, графы.
-            Парадигмы: Есть представлния, знания, практический опыт в ООП, события, параллельность/асинхронность, кеширование. 
-            Алгоритмы: сортировка, двоичный поиск проходили в рамках предмета "Структуры обработки данных".
-            Паттерны: какие-то из паттернов использовал на практике, имею представление. 
+            <pre>Языки программирования. Специальный предмет, в котором уделялось бы внимание классификации языков программирования, системам типов, парадигмам, в вузе не давался. В целом общее представление есть.
+Структуры. В вузе был предмет "Структуры обработки данных" длительностью в 1 семестр. Изучали: стеки, очереди, деревья, графы.
+Парадигмы: Есть представлния, знания, практический опыт в ООП, события, параллельность/асинхронность, кеширование. 
+Алгоритмы: сортировка, двоичный поиск проходили в рамках предмета "Структуры обработки данных".
+Паттерны: какие-то из паттернов использовал на практике, имею представление.</pre>
           </li>
         </ol>
       </div>

@@ -19,7 +19,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 
 .content { line-height: 1.5; }
 .header { text-align: center; }
-.header h1 { font-size: 28px; }
+.header h1 { font-size: 180%; }
 .contacts {}
 h1 .contacts { font-size: 50%; font-weight: normal; }
 .body { }
@@ -36,13 +36,15 @@ a, a:visited { color: #03c; outline: 0 none; }
 .cv-content dd { margin-left: 25px; }
 
 .answers { position: absolute; left: 40px; right: 150px; }
+.answers pre { width: 100%; overflow-x: auto; }
 
 .tabs { list-style: none; margin-left: 10px; white-space: nowrap; height: 32px; font-size: 90%; }
 .tabs li { display: inline-block; vertical-align: top; margin-right: 5px; position: relative; background: #eee; border: 1px solid #ccc; }
 .tabs li.selected { background: white; border: 1px solid #aaa; border-bottom: 1px solid white; margin-right: 5px; }
 .tabs li a { text-decoration: none; line-height: 30px; height: 30px; display: block; padding: 0 0.8em 0; }
-.tabs-contianer { margin-top: -1px; border-top: 1px solid #ccc; background: white; display: block; width: 100%; }
-.tab-content { }
+.tabs-contianer { margin-top: -1px; border-top: 1px solid #ccc; background: white; display: block; width: 100%; padding-top: 10px; }
+.tab-content, .tab-content h1 { display: none; }
+.tab-content.selected { display: block; }
 
 .collapse-handler { margin-left: -16px; }
 
