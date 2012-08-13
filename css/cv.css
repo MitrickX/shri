@@ -39,7 +39,7 @@ a, a:visited { color: #03c; outline: 0 none; }
 .answers pre { width: 100%; overflow-x: auto; }
 
 .tabs { list-style: none; margin-left: 10px; white-space: nowrap; height: 32px; font-size: 90%; }
-.tabs li { display: inline-block; vertical-align: top; margin-right: 5px; position: relative; background: #eee; border: 1px solid #ccc; }
+.tabs li { display: inline-block; vertical-align: top; margin-right: 5px; position: relative; background: #eee; border: 1px solid #ccc; float: left; }
 .tabs li.selected { background: white; border: 1px solid #aaa; border-bottom: 1px solid white; margin-right: 5px; }
 .tabs li a { text-decoration: none; line-height: 30px; height: 30px; display: block; padding: 0 0.8em 0; }
 .tabs-contianer { margin-top: -1px; border-top: 1px solid #ccc; background: white; display: block; width: 100%; padding-top: 10px; }
@@ -48,7 +48,7 @@ a, a:visited { color: #03c; outline: 0 none; }
 
 .collapse-handler { margin-left: -16px; }
 
-.icon16 { background: url(./icon16.png) no-repeat; text-decoration: none !important; text-indent: -9999px; height: 16px; width: 16px;  display: inline-block; }
+.icon16 { background: url(./icon16.png) no-repeat; text-decoration: none !important; text-indent: -9999px; height: 16px; width: 16px;  display: block; float: left; margin-right: 4px; }
 .icon16.darr { background-position: -112px 0;}
 .icon16.rarr { background-position: -144px 0; }
 .icon16.print { background-position: -32px -96px; }
